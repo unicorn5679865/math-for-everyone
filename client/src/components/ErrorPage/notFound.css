@@ -1,0 +1,74 @@
+   /* /* .error-page-message {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #888;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+    @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  } */
+
+   .error-page-container {
+    height: 100vh;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .error-page-gif {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 30%;
+  }
+
+  .error-page-heading {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  
+  .error-page-tip {
+    font-size: 1.5rem;
+    color: #777;
+  }
+
+  
+    @media screen and (max-width: 900px) {
+        .error-page-tip{
+            font-size: 2rem;
+        }
+
+        .error-page-heading {
+            font-size: 2.8rem;
+        }
+
+        .error-page-gif {
+            max-width: 40%;
+            min-width: 70%;
+        }
+    } 
+    @media screen and (max-width: 279px) {
+        .error-page-heading, .error-page-tip{
+            padding: 5px;
+            
+        }
+} 
