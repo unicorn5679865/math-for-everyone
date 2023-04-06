@@ -4,7 +4,7 @@ import Footer from "./components/footer";
 import MenuContainers from "./components/MenuContainers"
 
 
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { createGlobalStyle } from 'styled-components';
@@ -42,7 +42,7 @@ export default function App() {
               {/* <MenuContainers /> */}
               {/* <Lesson /> */}
             </Routes>
-        </BrowserRouter>,
+        </BrowserRouter>
         <Footer />
         </>
     )
