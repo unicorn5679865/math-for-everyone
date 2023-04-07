@@ -2,13 +2,9 @@ import React from 'react';
 import './css/index.css';
 import App from './App';
 
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 
 
-render(
-    <App />, 
-    document.getElementById("app")
-  );
 
-
+createRoot(document.getElementById("app")).render(<App />);

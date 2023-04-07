@@ -1,16 +1,13 @@
 import React from "react"
 import Header from "./components/header"
 import Footer from "./components/footer";
-import MenuContainers from "./components/MenuContainers"
+import {AuthContextProvider} from "./contexts/AuthContext";
 
 
 // import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { createGlobalStyle } from 'styled-components';
-import Lesson from "./components/lesson";
-import Signin from "./components/signinPage/sign-in";
-import NotFound from "./components/ErrorPage/notFound"
+
+import Router from "./router";
 
 
 const GlobalStyles = createGlobalStyle`
@@ -33,17 +30,12 @@ const GlobalStyles = createGlobalStyle`
 export default function App() {
     return (
         <>
-        <GlobalStyles /> 
-        <Header />
-        <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Signin />} />
-              <Route path="*" element={<NotFound />} />
-              {/* <MenuContainers /> */}
-              {/* <Lesson /> */}
-            </Routes>
-        </BrowserRouter>
-        <Footer />
+          <GlobalStyles /> 
+          <AuthContextProvider>
+            <Header />
+              <Router />
+            <Footer />
+          </AuthContextProvider>
         </>
     )
 }

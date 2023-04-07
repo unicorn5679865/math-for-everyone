@@ -51,7 +51,7 @@ const CARDS = [
 export default function MenuContainers() {
   return (
     <>
-      <div class="bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
+      <div className="bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
         {/* cards */}
         {CARDS.map(({ id, link, name, text, image }) => (
           <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12">
