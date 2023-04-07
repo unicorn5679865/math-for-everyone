@@ -1,7 +1,7 @@
 import Lesson from "../components/lesson";
 import Signin from "../components/signinPage/sign-in";
 import NotFound from "../components/ErrorPage/notFound";
-import MenuContainers from "../components/MenuContainers";
+import MenuChapter from "../components/MenuChapter";
 import PrivateRoute from "./PrivateRoute";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

@@ -29,6 +29,7 @@ export default function Signin() {
       document.getElementById("signInDiv"),
       { theme: "outline", size: "large"}
     )
+    window.google.accounts.id.prompt();
   }, []);
 
 console.log(authData);
