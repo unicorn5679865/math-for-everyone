@@ -1,7 +1,7 @@
 import React from "react"
 import Header from "./components/header"
 import Footer from "./components/footer";
-import MenuContainers from "./components/MenuContainers"
+import MenuChapter from "./components/MenuChapter"
 
 
 // import { render } from "react-dom";
@@ -39,7 +39,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Signin />} />
               <Route path="*" element={<NotFound />} />
-              {/* <MenuContainers /> */}
+              <Route path="/MenuChapter" element={<MenuChapter />} />
               {/* <Lesson /> */}
             </Routes>
         </BrowserRouter>

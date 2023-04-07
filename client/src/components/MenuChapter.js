@@ -1,4 +1,5 @@
-import React from "react"
+import React, {useState} from "react"
+import Modal from "./modal"
 
 
 
@@ -48,7 +49,11 @@ const CARDS = [
 ]
 
 
-export default function MenuContainers() {
+export default function MenuChapter() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOnClose = () => setShowModal(false)
+
   return (
     <>
       <div class="bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
@@ -56,11 +61,11 @@ export default function MenuContainers() {
         {CARDS.map(({ id, link, name, text, image }) => (
           <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12">
             <img
-              className="h-full absolute rounded-lg opacity-50  "
+              className="h-full w-full absolute rounded-lg opacity-50  "
               src={image}
               alt={name}
             />
-            <div className="relative  h-full flex flex-column flex-wrap justify-center items-center p-[5%]">
+            <div className="relative h-full flex flex-column flex-wrap justify-center items-center p-[5%]">
               <h5
                 className="text-xl font-medium leading-tight text-center sm:mb-6 ">
                 {name}
@@ -69,15 +74,17 @@ export default function MenuContainers() {
                 {text}
               </p>
               <button
+                onClick={() => setShowModal(true)}
                 type="button"
-                className="bg-primary-orange text-xs font-medium uppercase shadow-[0_4px_9px_-4px_#ff951c] transition duration-150 ease-in-out hover:bg-primary-green hover:shadow-[0_8px_9px_-4px_#10B582] focus:outline-none focus:ring focus:ring-violet-300 active:bg-violet-700 px-5 py-2 text-sm leading-5 rounded font-semibold text-white">
+                className="bg-primary-orange text-xs font-medium uppercase shadow-[0_4px_9px_-4px_#ff951c] px-5 py-2 text-sm leading-5 rounded font-semibold text-white
+                 hover:bg-primary-green hover:shadow-[0_8px_9px_-4px_#10B582] hover:scale-110 duration-300 transition ease-in-out
+                 focus:bg-primary-green focus:shadow-[0_8px_9px_-4px_#10B582] active:bg-primary-green ">
                 Учить
               </button>
             </div>
-
           </div>
         ))}
-
+      <Modal onClose={handleOnClose} visible={showModal}/>
 
       </div>
 
