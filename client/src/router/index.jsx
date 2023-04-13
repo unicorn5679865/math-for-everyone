@@ -11,12 +11,16 @@ export default () =>
             <Route path="/signin" element={<Signin />} />
             <Route
                 path="/lesson"
-                element={
-                    <PrivateRoute>
-                        <Lesson/>
-                    </PrivateRoute>
+                element={ <Lesson/>
+                    // <PrivateRoute>
+                    //    
+                    // </PrivateRoute>
                 }/>
-            {/* <PrivateRoute path="/renameMe" element={<MenuContainers/>} /> */}
+                <Route
+                path="/menuChapter"
+                element={<MenuChapter/>} />
+                
+            
             <Route path="*" element={<NotFound />} />
         </Routes>
     </BrowserRouter>
