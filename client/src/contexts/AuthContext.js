@@ -4,8 +4,8 @@ export const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({children}) => {
     const [authData, setAuthData] = useState(null);
-    const login = (user, token) => {
-        setAuthData({user, token});
+    const login = (user) => {
+        setAuthData({user});
     };
 
     const logout = () => {

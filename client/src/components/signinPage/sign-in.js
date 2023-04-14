@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext} from "react";
 import axios, { AxiosResponse } from "axios";
-import GoogleLogin from "react-google-login";
-import jwt_decode from "jwt-decode"
 import { useAuth } from "../../hooks/useAuth";
 
 const { REACT_APP_BACKEND_URL } = process.env;
@@ -12,10 +10,10 @@ export default function Signin() {
   const handleCredentialResponse = async (response) => {
     // document.getElementById("signInDiv").hidden = true;
 
-    const { data: {token} } = await axios.post(`${REACT_APP_BACKEND_URL}/api/auth`, { token: response.credential });
-    const userObject = jwt_decode(token);
+    const { data: {user} } = await axios.post(`${REACT_APP_BACKEND_URL}/api/auth`, { credential: response.credential }, {withCredentials: true});
+    // const userObject = jwt_decode(token);
 
-    login(userObject, token);
+    login(user);
   }
 
   useEffect(() => {
