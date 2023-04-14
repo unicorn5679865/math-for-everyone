@@ -5,7 +5,6 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 
-
 export default function Lesson() {
     const [numPages, setNumPages] = useState(null);
 
@@ -14,7 +13,7 @@ export default function Lesson() {
       }
 
     return (
-        
+    
             <div className="flex justify-start overflow-hidden mb-3">
                 <div className="theory flex flex-col mx-10  w-6/12 h-[700px] text-left">
                     <div className="mt-3 py-4 border-b-2 border-solid">

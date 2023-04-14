@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import Modal from "./modal"
+import Modal from "./modals/modal"
 
 
 
@@ -49,7 +49,7 @@ const CARDS = [
 ]
 
 
-export default function MenuChapter() {
+export default function Topics() {
   const [showModal, setShowModal] = useState(false);
 
   const handleOnClose = () => setShowModal(false)
@@ -59,7 +59,7 @@ export default function MenuChapter() {
       <div className="bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
         {/* cards */}
         {CARDS.map(({ id, link, name, text, image }) => (
-          <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12">
+          <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12" key={id}>
             <img
               className="h-full w-full absolute rounded-lg opacity-50  "
               src={image}
@@ -84,7 +84,8 @@ export default function MenuChapter() {
             </div>
           </div>
         ))}
-      <Modal onClose={handleOnClose} visible={showModal}/>
+
+        {showModal && <Modal onClose={handleOnClose}/>}
 
       </div>
 

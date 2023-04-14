@@ -2,6 +2,7 @@ import React from "react"
 import Header from "./components/header"
 import Footer from "./components/footer";
 import {AuthContextProvider} from "./contexts/AuthContext";
+import {ApiErrorHandler} from "./components/ApiErrorHandler/ApiErrorHandler"
 
 
 // import { render } from "react-dom";
@@ -32,9 +33,9 @@ export default function App() {
         <>
           <GlobalStyles /> 
           <AuthContextProvider>
-            <Header />
+            <ApiErrorHandler>
               <Router />
-            <Footer />
+            </ApiErrorHandler>    
           </AuthContextProvider>
         </>
     )

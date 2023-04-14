@@ -1,26 +1,30 @@
 import Lesson from "../components/lesson";
 import Signin from "../components/signinPage/sign-in";
 import NotFound from "../components/ErrorPage/notFound";
-import MenuChapter from "../components/MenuChapter";
+import Topics from "../components/topics";
 import PrivateRoute from "./PrivateRoute";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 export default () =>  
     <BrowserRouter>
-        <Routes>
-            <Route path="/signin" element={<Signin />} />
-            <Route
-                path="/lesson"
-                element={ <Lesson/>
-                    // <PrivateRoute>
-                    //    
-                    // </PrivateRoute>
-                }/>
+        <Header />
+            <Routes>
+                <Route path="/signin" element={<Signin />} />
                 <Route
-                path="/menuChapter"
-                element={<MenuChapter/>} />
+                    path="/lesson"
+                    element={ <Lesson/>
+                        // <PrivateRoute>
+                        //    
+                        // </PrivateRoute>
+                    }/>
+                <Route
+                    path="/topics"
+                    element={<Topics/>} />
+                    
                 
-            
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        <Footer />
     </BrowserRouter>

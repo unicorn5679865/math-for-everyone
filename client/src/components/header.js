@@ -1,22 +1,26 @@
-import React, { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useAuth } from '../hooks/useAuth'
+import React, { Fragment } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '../hooks/useAuth';
+import { classNames } from '../utils';
+import { useNavigate } from 'react-router';
 
 const navigation = [
-  { name: 'Уроки', href: '#', current: true },
+  { name: 'Уроки', href: '/topics', current: true },
   { name: 'Оценки', href: '#', current: false },
   { name: 'Проекты', href: '#', current: false },
   { name: 'Календарь', href: '#', current: false },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Header() {
 
-  const {authData} = useAuth();
+  const { authData } = useAuth();
+  const navigate = useNavigate();
+
+  const handleNavItemClick = (path) => {
+    navigate(path)
+  };
+
 
   return (
     <Disclosure as="nav" className=" w-full bg-primary-green ">
@@ -59,6 +63,7 @@ export default function Header() {
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
+                        onClick={() => handleNavItemClick(item.href)}
                       >
                         {item.name}
                       </a>
