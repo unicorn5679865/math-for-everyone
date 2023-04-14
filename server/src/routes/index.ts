@@ -1,7 +1,15 @@
-import authRoutes from "./auth.route";
-import lessonRoutes from "./lessons.route";
+import express from "express";
+import { authGuard } from "../auth";
+import lessonsController from "../controllers/lessons.controller";
+import topicsController from "../controllers/topics.controller";
+import passport from "passport";
+
+const router = express.Router();
 
 export const apiRoutes = [
-    authRoutes,
-    lessonRoutes
+    router.post("/auth", passport.authenticate("google-one-tap"), (req, res) => {
+        res.json({user: req.user})
+    }),
+    router.use("/lessons",authGuard, lessonsController),
+    router.use("/topics", authGuard, topicsController),
 ]

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 interface LessonDocument extends mongoose.Document {
   name: string;
   link: string;
+  topicId: Number;
 }
 
 const LessonSchema = new mongoose.Schema({
@@ -14,6 +15,11 @@ const LessonSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+  },
+
+  topicId: {
+    type: String,
+    required: false, //TODO: Change to required later
   },
 });
 
