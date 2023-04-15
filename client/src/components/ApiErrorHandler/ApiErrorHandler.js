@@ -20,7 +20,7 @@ export const ApiErrorHandler = ({ children }) => {
   const renderContent = () => {
     if (errorStatusCode) {
         console.error(`Request failed with status: ${errorStatusCode}`)
-        // window.location.replace("/signin")
+        window.location.replace("/signin")
     }
 
     return children;

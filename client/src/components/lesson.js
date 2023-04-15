@@ -4,10 +4,13 @@ import pdfFile from './pdf/kursovaya_rabota.pdf';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { useParams } from "react-router";
+import { useQuery } from "../hooks/useQuery";
 
 export default function Lesson() {
-    console.log(1232313321213123);
+
     let { lessonId } = useParams();
+    const { data } = useQuery(`/lessons/${lessonId}`);
+    console.log(data);
 
     const [numPages, setNumPages] = useState(null);
 
@@ -23,12 +26,12 @@ export default function Lesson() {
                         <p className="text-xl font-bold underline underline-offset-4">Теория</p>
                     </div>
                     <div className="scrollbar border-2 border-solid h-[650px] overflow-y-scroll  ">
-                        <Document className="w-full" file={pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
+                        <Document className="w-full" file={data?.link} onLoadSuccess={onDocumentLoadSuccess}>
                         
                         {
-                            Array(numPages).fill().map((_, i) =>(
-                                <Page pageNumber={i+1} />
-                            ))
+                            Array(numPages).fill().map((_, i) =>
+                                <Page key={i} pageNumber={i+1} />
+                            )
                             
                         }
                             
@@ -40,7 +43,7 @@ export default function Lesson() {
                         <p className="text-xl font-bold underline underline-offset-4">Практика</p>
                     </div>
                     <div className="scrollbar border-2 border-solid h-[650px] overflow-y-scroll  ">
-                        <Document className="w-full"file={pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
+                        <Document className="w-full" file={data?.link} onLoadSuccess={onDocumentLoadSuccess}>
                         {
                             Array(numPages).fill().map((_, i) =>(
                                 <Page pageNumber={i+1} />
