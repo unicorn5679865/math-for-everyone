@@ -1,21 +1,36 @@
 import { useErrorStatus } from '../components/ApiErrorHandler/ApiErrorHandler';
 import { useEffect, useState } from 'react';
 
-export const useQuery = (fetchOptions) => {
+const baseUrl = "http://localhost:5000/api";
+
+export const useQuery = (requestInfo) => {
   const { setErrorStatusCode } = useErrorStatus();
   const [apiData, setApiData] = useState();
+
+  
+  let url, fetchOptions = {};
+  if (typeof requestInfo === 'string') {
+      url = `${baseUrl}${requestInfo}`;
+  } else {
+    fetchOptions = {
+      ...fetchOptions, url: `${baseUrl}${fetchOptions.url}`
+    }
+  }
   
   useEffect (() => {
-    fetch(fetchOptions, {credentials: 'include'})
-      .then(data => data.json())
-      .then(({ code, status, ...apiData }) => {
-        if (code > 400) {
-          setErrorStatusCode(code)
-        } else {
+    fetch(url || fetchOptions, {credentials: 'include'})
+      .then(res => {
+        if (res.status >= 400) {
+          return setErrorStatusCode(res.status)
+        }
+
+        return res.json();
+      })
+      .then(apiData => {
           setApiData(apiData); 
         }
-      });
-  }, [fetchOptions]);
+      );
+  }, [requestInfo]);
   
   return {data: apiData};
 }

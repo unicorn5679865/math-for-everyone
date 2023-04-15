@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useQuery } from "../../hooks/useQuery";
 
-export default function Modal({onClose}) {
+export default function LessonModal({topicId, onClose}) {
+console.log(topicId);
 
     const handleOnClose = (e) => {
         if (e.target.id === 'container') {
@@ -9,8 +10,9 @@ export default function Modal({onClose}) {
         }
     };
 
-    const { data } = useQuery("http://localhost:5000/api/lessons");
+    const { data: lessons } = useQuery(`/topics/${topicId}/lessons`);
 
+    console.log(lessons);
 
     return (
         <>
@@ -25,7 +27,7 @@ export default function Modal({onClose}) {
                         </div>
                         <div className="flex flex-col my-3">
                             {
-                                data?.lessons.map((lesson) => 
+                                lessons?.map((lesson) => 
                                     <button key={lesson._id} className="py-2 mb-1 mx-3 btn border-y border-primary-green "><a href="/">{lesson.name}</a></button>
                                 )
                             }

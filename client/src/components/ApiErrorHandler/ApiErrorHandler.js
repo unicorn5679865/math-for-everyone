@@ -19,7 +19,8 @@ export const ApiErrorHandler = ({ children }) => {
 
   const renderContent = () => {
     if (errorStatusCode) {
-        alert(`Request failed with status: ${errorStatusCode}`)
+        console.error(`Request failed with status: ${errorStatusCode}`)
+        window.location.replace("/signin")
     }
 
     return children;
