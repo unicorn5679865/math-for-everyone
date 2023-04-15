@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useQuery } from "../../hooks/useQuery";
 
 export default function LessonModal({topicId, onClose}) {
@@ -11,6 +12,11 @@ console.log(topicId);
     };
 
     const { data: lessons } = useQuery(`/topics/${topicId}/lessons`);
+    const navigate = useNavigate();
+
+    const handleLessonClick = (lessonId) => {
+        navigate(`/lesson/${lessonId}`);
+    };
 
     console.log(lessons);
 
@@ -28,7 +34,12 @@ console.log(topicId);
                         <div className="flex flex-col my-3">
                             {
                                 lessons?.map((lesson) => 
-                                    <button key={lesson._id} className="py-2 mb-1 mx-3 btn border-y border-primary-green "><a href="/">{lesson.name}</a></button>
+                                    <button
+                                        key={lesson._id}
+                                        className="py-2 mb-1 mx-3 btn border-y border-primary-green"
+                                        onClick={() => handleLessonClick(lesson._id)}>
+                                        {lesson.name}
+                                    </button>
                                 )
                             }
                         </div>

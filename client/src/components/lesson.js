@@ -3,14 +3,17 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import pdfFile from './pdf/kursovaya_rabota.pdf';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-
+import { useParams } from "react-router";
 
 export default function Lesson() {
+    console.log(1232313321213123);
+    let { lessonId } = useParams();
+
     const [numPages, setNumPages] = useState(null);
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
-      }
+    }
 
     return (
     

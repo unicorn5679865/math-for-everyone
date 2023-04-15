@@ -13,7 +13,7 @@ export default () =>
             <Routes>
                 <Route path="/signin" element={<Signin />} />
                 <Route
-                    path="/lesson"
+                    path="/lesson/:lessonId"
                     element={ <Lesson/>
                         // <PrivateRoute>
                         //    
@@ -22,8 +22,7 @@ export default () =>
                 <Route
                     path="/topics"
                     element={<Topics/>} />
-                    
-                
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         <Footer />
