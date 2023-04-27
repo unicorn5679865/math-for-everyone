@@ -33,8 +33,15 @@ export default function Signin() {
 console.log(authData);
   return (
     <div className="h-screen flex items-center justify-center bg-gray-100 ">
-      <div className="w-2/3 h-2/3 flex flex-col items-center justify-center border-solid rounded-xl border-2 drop-shadow-md bg-white-100">
-        <div><p>ffkfkfkfkfkf</p></div>
+      <div className="w-2/3 h-2/3 flex flex-col items-center justify-center border-solid rounded-xl border-2 drop-shadow-md bg-green-50">
+        <div className="mx-[10%] text-center">
+          <h1 className="text-5xl my">Добро пожаловать!</h1>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy 
+            text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has 
+            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
+            in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+            like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </div>
         <div id="signInDiv" className=""></div>
           {authData && 
           <>

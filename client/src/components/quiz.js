@@ -81,7 +81,7 @@ console.log(form.values);
             <div className='question-count'>
               <span>Вопрос {index + 1}</span>/{questions.length}
             </div>
-            
+
             <div className='question-text'>{question.question}</div>
             <div className='answer-section flex flex-col justify-between mb-[0.5rem] min-h-[1.5rem] px-[1.5rem]'>
               {question.options.map((option, optionIndex) => (
