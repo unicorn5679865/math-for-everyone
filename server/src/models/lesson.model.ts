@@ -19,7 +19,7 @@ const LessonSchema = new mongoose.Schema({
 
   topicId: {
     type: String,
-    required: false, //TODO: Change to required later
+    required: true, //TODO: Change to required later
   },
 });
 

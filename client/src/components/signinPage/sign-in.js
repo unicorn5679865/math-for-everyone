@@ -32,18 +32,20 @@ export default function Signin() {
 
 console.log(authData);
   return (
-    <div className="h-screen w-screen flex items-center justify-center flex-col bg-gray-100">
-      <div id="signInDiv"></div>
-        {authData && 
-        <>
-          <img src={authData.user.picture} className="rounded-full" />
-          <h1 className="text-xl font-semibold text-center my-5">
-            {authData.user.name}
-          </h1>
-        </>
-        }
-  </div>
-
+    <div className="h-screen flex items-center justify-center bg-gray-100 ">
+      <div className="w-2/3 h-2/3 flex flex-col items-center justify-center border-solid rounded-xl border-2 drop-shadow-md bg-white-100">
+        <div><p>ffkfkfkfkfkf</p></div>
+        <div id="signInDiv" className=""></div>
+          {authData && 
+          <>
+            <img src={authData.user.picture} className="rounded-full" />
+            <h1 className="text-xl font-semibold text-center my-5">
+              {authData.user.name}
+            </h1>
+          </>
+          }
+      </div>
+    </div>
   )
 }
 

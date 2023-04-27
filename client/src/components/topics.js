@@ -54,27 +54,33 @@ export default function Topics() {
   const [modalState, setModalState] = useState({
     showModal: false,
     selectedTopicId: null,
+    selectedName: "",
   });
 
   const {data} = useQuery("/topics");
+
   const handleOnClose = () => setModalState({
     showModal: false,
     selectedTopicId: null,
+    selectedName: "",
   });
 
-  const handleOpenLessonsModal = (topicId) => {
+  const handleOpenLessonsModal = (topicId, topicName) => {
     setModalState({
       showModal: true,
       selectedTopicId: topicId,
+      selectedName: topicName,
     });
-  }
+  };
 
   return (
     <>
-      <div className="bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
+      <div className="relative bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
         {/* cards */}
         {data?.topics.map(({ _id, name, description, img }) => (
-          <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12" key={_id}>
+          <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12" 
+               key={_id}
+          >
             <img
               className="h-full w-full absolute rounded-lg opacity-50  "
               src={`img/${img}`}
@@ -89,9 +95,9 @@ export default function Topics() {
                 {description}
               </p>
               <button
-                onClick={() => handleOpenLessonsModal(_id)}
+                onClick={() => handleOpenLessonsModal(_id, name)}
                 type="button"
-                className="bg-primary-orange text-xs font-medium uppercase shadow-[0_4px_9px_-4px_#ff951c] px-5 py-2 text-sm leading-5 rounded font-semibold text-white
+                className="bg-primary-orange uppercase shadow-[0_4px_9px_-4px_#ff951c] px-5 py-2 text-sm leading-5 rounded font-semibold text-white
                  hover:bg-primary-green hover:shadow-[0_8px_9px_-4px_#10B582] hover:scale-110 duration-300 transition ease-in-out
                  focus:bg-primary-green focus:shadow-[0_8px_9px_-4px_#10B582] active:bg-primary-green ">
                 Учить
@@ -99,8 +105,8 @@ export default function Topics() {
             </div>
           </div>
         ))}
-
-        {modalState.showModal && <LessonModal onClose={handleOnClose} topicId={modalState.selectedTopicId}/>}
+        
+        {modalState.showModal && <LessonModal onClose={handleOnClose} topicId={modalState.selectedTopicId} name={modalState.selectedName} />}
 
       </div>
 

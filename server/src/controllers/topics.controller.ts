@@ -11,8 +11,6 @@ router
     .get("/:topicId/lessons", async (req, res) => {
         console.log(req.params);
         const { topicId } = req.params; 
-
-        console.log( await Lesson.find({}));
         
 
         return res.json(
