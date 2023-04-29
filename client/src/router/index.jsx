@@ -6,6 +6,8 @@ import PrivateRoute from "./PrivateRoute";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { AuthContextProvider } from "../contexts/AuthContext";
+import { ApiErrorHandler } from "../components/ApiErrorHandler/ApiErrorHandler";
 
 export default () =>  
     <BrowserRouter>

@@ -24,13 +24,8 @@ export default function Lesson() {
     };
 
     const handleQuizCompleted = async (practiceId, answers) => {
-        try {
             const res = await api.validateAnswers(practiceId, answers);
-        } catch (error) {
-            // if ()
-        }
-
-        setModalState({isOpen: true, message: res.data.result })
+            setModalState({isOpen: true, message: res.data.result })
     };
 
     const handleClose = () => {
