@@ -59,7 +59,7 @@ export default function Topics() {
 
   const {data} = useQuery("/topics");
 
-  const handleOnClose = () => setModalState({
+  const handleClose = () => setModalState({
     showModal: false,
     selectedTopicId: null,
     selectedName: "",
@@ -106,7 +106,7 @@ export default function Topics() {
           </div>
         ))}
         
-        {modalState.showModal && <LessonModal onClose={handleOnClose} topicId={modalState.selectedTopicId} name={modalState.selectedName} />}
+        {modalState.showModal && <LessonModal onClose={handleClose} topicId={modalState.selectedTopicId} name={modalState.selectedName} />}
 
       </div>
 

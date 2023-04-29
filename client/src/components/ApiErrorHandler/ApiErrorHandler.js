@@ -1,11 +1,14 @@
 import {createContext} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMemo, useState, useContext } from 'react';
+import { useAuth } from "../../hooks/useAuth"
 
 const ErrorStatusContext = createContext();
 
 
 export const ApiErrorHandler = ({ children }) => {
+
+  const { logout } = useAuth();
 //   const history = useHistory();
   const [errorStatusCode, setErrorStatusCode ] = useState();
   
@@ -18,9 +21,9 @@ export const ApiErrorHandler = ({ children }) => {
   
 
   const renderContent = () => {
-    if (errorStatusCode) {
-        console.error(`Request failed with status: ${errorStatusCode}`)
-        window.location.replace("/signin")
+    if (errorStatusCode === 401 || errorStatusCode === 403) {
+        console.error(`Request failed with status: ${errorStatusCode}`);
+        logout();
     }
 
     return children;
@@ -28,7 +31,8 @@ export const ApiErrorHandler = ({ children }) => {
   
 
   const contextPayload = useMemo(
-    () => ({ setErrorStatusCode }), 
+    () => ({ setErrorStatusCode }),
+
     [setErrorStatusCode]
   );
   

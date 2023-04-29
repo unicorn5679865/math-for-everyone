@@ -27,6 +27,22 @@ $secondaryColor: #FA9F42;
   }
 }
 
+html {
+  box-sizing: border-box;
+  font-size: 90%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+}
+
+
 .label--checkbox,
 .label--radio {
     position: relative;

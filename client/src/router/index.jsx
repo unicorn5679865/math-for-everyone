@@ -9,21 +9,25 @@ import Footer from "../components/footer";
 
 export default () =>  
     <BrowserRouter>
-        <Header />
-            <Routes>
-                <Route path="/signin" element={<Signin />} />
-                <Route
-                    path="/lesson/:lessonId"
-                    element={ <Lesson/>
-                        // <PrivateRoute>
-                        //    
-                        // </PrivateRoute>
-                    }/>
-                <Route
-                    path="/topics"
-                    element={<Topics/>} />
+        <AuthContextProvider>
+            <ApiErrorHandler>
+                <Header />
+                    <Routes>
+                        <Route path="/signin" element={<Signin />} />
+                        <Route
+                            path="/lesson/:lessonId"
+                            element={ <Lesson/>
+                                // <PrivateRoute>
+                                //    
+                                // </PrivateRoute>
+                            }/>
+                        <Route
+                            path="/topics"
+                            element={<Topics/>} />
 
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        <Footer />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                <Footer />
+            </ApiErrorHandler>
+        </AuthContextProvider>
     </BrowserRouter>
