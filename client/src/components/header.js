@@ -59,7 +59,7 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-primary-orange  text-white' : 'text-gray-800 hover:bg-primary-orange hover:text-white',
+                          item.current ? 'bg-primary-orange  text-white' : 'text-white hover:bg-primary-orange hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}

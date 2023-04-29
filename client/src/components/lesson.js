@@ -51,11 +51,13 @@ export default function Lesson() {
                 <div className="practice flex flex-col mx-10 sm:mr-10 sm:w-6/12 h-[700px] text-left">
                     {
                         lesson?.practices.map(practice => (
-                            <div className="practice-container" key={practice._id}>
+                            <div className="practice-container h-full flex flex-col" key={practice._id}>
                                 <div className="mt-3 py-4 border-solid ">
                                     <p className="text-xl font-bold underline underline-offset-4">{practice.name}</p>
                                 </div>
-                                <div className="scrollbar border-2 border-solid h-[650px] overflow-y-scroll  ">
+                                <div className="overflow-y-scroll">
+                                    <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
+                                    <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
                                     <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
                                 </div>
                             </div>

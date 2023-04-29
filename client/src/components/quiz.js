@@ -84,20 +84,17 @@ export default function Quiz({tasks, onQuizCompleted}) {
         Вы набрали {score} баллов из {questions.length}
       </div> */}
 
-      <div className='questions-section flex flex-col'>
+      <div className='questions-section flex flex-col gap-4 items-center w-full'>
         {tasks.map((question, index) => (
 
-          <div className='question-section border rounded-md mx-2 my-4' key={index}>
-            <div className='question-count'>
-              <span>Вопрос {index + 1}</span>/{tasks.length}
-            </div>
+          <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' key={index}>
 
             {React.createElement(questionComponentByType[question.type], { question, name: index, onChange: form.handleChange })}
 
           </div>
         ))}
       </div>
-      <Button className='m-auto' type='submit'>Получить 2 в дневник</Button>
+      <Button className='m-auto my-4' type='submit'>Получить 2 в дневник</Button>
     </form>
   );
 }
