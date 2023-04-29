@@ -1,6 +1,6 @@
 import express from "express";
-import Topic from "../models/topic.model";
-import Lesson from "../models/lesson.model";
+import {Topic} from "../models";
+import {Lesson} from "../models";
 
 const router = express.Router();
 

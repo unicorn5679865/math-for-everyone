@@ -2,9 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { apiRoutes } from "./routes";
-import { connectDB } from "./db";
+import { initDB } from "./models";
 import passport from "passport";
-import {initGoogleOneTapAuth} from "./auth";
+import { initGoogleOneTapAuth } from "./auth";
 
 dotenv.config();
 
@@ -41,7 +41,7 @@ app.use(passport.session());
 
 app.use("/api", apiRoutes);
 
-connectDB();
+initDB();
 
 app.listen(PORT, () =>
   console.log(`The server is up and running on PORT ${PORT} 🚀`)

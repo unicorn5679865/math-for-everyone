@@ -1,7 +1,8 @@
 import {Express, Request, Response, NextFunction, Router} from 'express';
 import passport from "passport";
 import { GoogleOneTapStrategy } from "passport-google-one-tap";
-import User, { UserDocument } from "./models/user.model"
+import { UserDocument } from "./models/user.model"
+import { User } from './models';
 
 export const initGoogleOneTapAuth = () => {
   passport.use(
