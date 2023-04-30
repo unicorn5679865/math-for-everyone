@@ -34,7 +34,7 @@ export default function Lesson() {
     };
 
     return (
-            <div className="sm:flex justify-start overflow-hidden mb-3 h-full"> 
+            <div className="sm:flex justify-start mb-3 h-full"> 
                 <div className="theory flex flex-col ml-4  sm:w-7/12 text-left">
                     <div className="mt-3 py-4 ">
                         <p className="text-xl border-b-2 ">Теория</p>
