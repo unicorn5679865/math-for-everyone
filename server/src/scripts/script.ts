@@ -86,6 +86,13 @@ const practices = [
         tasks: [
             ...tasks.map(t => t._id)
         ]
+    },
+    {
+        name: "Практика к уроку 1 - Повторение",
+        _id: new mongoose.Types.ObjectId(),
+        tasks: [
+            ...tasks.map(t => t._id)
+        ]
     }
 ];
 
@@ -95,7 +102,7 @@ const lessons = [
         link: "google.com",
         topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
-        practices: [practices[0]._id]
+        practices: [practices[0]._id, practices[1]._id]
     },
     {
         name: "Четность и нечетность функции. Периодичность",

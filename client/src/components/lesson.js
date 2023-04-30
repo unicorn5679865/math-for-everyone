@@ -9,6 +9,7 @@ import Quiz from "./quiz";
 import { api } from "../api/api";
 import MessageModal from "./modals/message.modal";
 import pdf from "./pdf/kursovaya_rabota.pdf"
+import { ExpandablePanel } from "./common/ExpandablePanel";
 
 export default function Lesson() {
 
@@ -33,12 +34,12 @@ export default function Lesson() {
     };
 
     return (
-            <div className="sm:flex justify-start overflow-hidden mb-3"> 
-                <div className="theory flex flex-col mx-10  sm:w-6/12 h-[700px] text-left">
-                    <div className="mt-3 py-4  ">
-                        <p className="text-xl font-bold underline underline-offset-4">Теория</p>
+            <div className="sm:flex justify-start overflow-hidden mb-3 h-full"> 
+                <div className="theory flex flex-col ml-4  sm:w-7/12 text-left">
+                    <div className="mt-3 py-4 ">
+                        <p className="text-xl border-b-2 ">Теория</p>
                     </div>
-                    <div className="scrollbar border-2 border-solid h-[650px] overflow-y-scroll  ">
+                    <div className="scrollbar overflow-y-scroll  ">
                         <Document className="w-full" file={pdf} onLoadSuccess={handleDocumentLoadSuccess}>
                             {
                                 Array(numPages).fill().map((_, i) =>
@@ -48,24 +49,23 @@ export default function Lesson() {
                         </Document>  
                     </div>
                 </div>
-                <div className="practice flex flex-col mx-10 sm:mr-10 sm:w-6/12 h-[700px] text-left">
+                <div className="practice flex flex-col mx-10 sm:mr-10 sm:w-5/12 text-left">
+                    <div className="mt-3 py-4">
+                        <p className="text-xl border-b-2">Практика</p>
+                    </div>
+                    <div className="overflow-y-scroll">
                     {
                         lesson?.practices.map(practice => (
-                            <div className="practice-container h-full flex flex-col" key={practice._id}>
-                                <div className="mt-3 py-4 border-solid ">
-                                    <p className="text-xl font-bold underline underline-offset-4">{practice.name}</p>
-                                </div>
-                                <div className="overflow-y-scroll">
+                            <div className="practice-container flex flex-col mb-4" key={practice._id}>
+                                <ExpandablePanel text={practice.name} className="bg-primary-green">
                                     <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
-                                    <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
-                                    <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
-                                </div>
+                                </ExpandablePanel>
                             </div>
                         ))
                     }
+                    </div>
                 </div>
-                
-                {modalState.isOpen && <MessageModal message={modalState.message} onClose={handleClose}/>}
+                <MessageModal isOpen={modalState.isOpen} message={modalState.message} title="Ваш результат" onClose={handleClose}/>
 
             </div>
         

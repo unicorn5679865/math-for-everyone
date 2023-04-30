@@ -5,7 +5,7 @@ import { UserDocument } from "./models/user.model"
 import { User } from './models';
 
 export const initGoogleOneTapAuth = () => {
-  passport.use(
+  passport.use( 
     new GoogleOneTapStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -31,14 +31,12 @@ export const initGoogleOneTapAuth = () => {
   );
 
   passport.serializeUser(function({id, name, emails}: any, cb) {
-    console.log("00000002");
     process.nextTick(function() {
       return cb(null, {id, name, emails});
     });
   });
   
   passport.deserializeUser(function(user: UserDocument, cb) {
-    console.log("00000003");
     process.nextTick(function() {
       console.log(user);
       return cb(null, user);

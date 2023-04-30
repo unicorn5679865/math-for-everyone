@@ -1,45 +1,35 @@
 import {createContext} from 'react';
-import { useHistory } from 'react-router-dom';
-import { useMemo, useState, useContext } from 'react';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useMemo, useState, useContext, useEffect } from 'react';
 import { useAuth } from "../../hooks/useAuth"
 
 const ErrorStatusContext = createContext();
 
 
 export const ApiErrorHandler = ({ children }) => {
-
   const { logout } = useAuth();
-//   const history = useHistory();
   const [errorStatusCode, setErrorStatusCode ] = useState();
-  
 
-//   useEffect(() => {
-//     const unlisten = history.listen(() => setErrorStatusCode(undefined));
 
-//     return unlisten;
-//   }, [])
-  
+  useEffect(() => {
+    if (!errorStatusCode) return;
 
-  const renderContent = () => {
     if (errorStatusCode === 401 || errorStatusCode === 403) {
-        console.error(`Request failed with status: ${errorStatusCode}`);
-        logout();
+      logout();
     }
 
-    return children;
-  }
-  
+    setErrorStatusCode(null);
+  }, [errorStatusCode]);
 
   const contextPayload = useMemo(
     () => ({ setErrorStatusCode }),
 
     [setErrorStatusCode]
   );
-  
 
   return (
     <ErrorStatusContext.Provider value={contextPayload}>
-      {renderContent()}
+      {children}
     </ErrorStatusContext.Provider>
   )
 }

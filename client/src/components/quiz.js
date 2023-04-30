@@ -54,7 +54,7 @@ function TextAnswer ({question, ...inputProps}) {
       <div className='answer-section flex flex-col justify-between mb-[0.5rem] min-h-[1.5rem] px-[1.5rem]'>
         <label className='answer-option'>
           <input
-            className='text-input'
+            className='text-input block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 rounded-lg p-2'
               type='text'
               {...inputProps}
           />
@@ -79,22 +79,18 @@ export default function Quiz({tasks, onQuizCompleted}) {
 
 
   return (
-    <form className='quiz flex flex-col' onSubmit={form.handleSubmit}>
-      {/* <div className='score-section'>
-        Вы набрали {score} баллов из {questions.length}
-      </div> */}
-
+    <form className='quiz flex flex-col p-3' onSubmit={form.handleSubmit}>
       <div className='questions-section flex flex-col gap-4 items-center w-full'>
         {tasks.map((question, index) => (
 
-          <div className='w-full block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' key={index}>
+          <div className='w-full block max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' key={index}>
 
             {React.createElement(questionComponentByType[question.type], { question, name: index, onChange: form.handleChange })}
 
           </div>
         ))}
       </div>
-      <Button className='m-auto my-4' type='submit'>Получить 2 в дневник</Button>
+      <Button className='m-auto mt-4' type='submit'>Получить 2 в дневник</Button>
     </form>
   );
 }

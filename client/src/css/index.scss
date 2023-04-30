@@ -42,6 +42,11 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 .label--checkbox,
 .label--radio {

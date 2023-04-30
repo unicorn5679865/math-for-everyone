@@ -3,6 +3,20 @@ import {Practice} from "../models";
 import { TaskDocument } from "../models/task.model";
 import deepEqual from "deep-equal";
 
+const answerIsCorrect = (userAnswer, correctAnswer) => {
+    if (typeof correctAnswer === 'string' || typeof correctAnswer === 'number') {
+        return userAnswer === correctAnswer;
+    }
+
+    if (Array.isArray(correctAnswer)) {
+        if (correctAnswer.length !== userAnswer.length) {return false;}
+
+        return correctAnswer.every(answer => userAnswer.includes(answer));
+    }
+
+    return false;
+};
+
 const router = express.Router();
 
 router
@@ -18,22 +32,17 @@ router
         const { practiceId } = req.params; 
         const answers = req.body
         const practice = await Practice.findById(practiceId).populate<{tasks: TaskDocument[]}>("tasks");
-
-        let isEverythingCorrect = false;
     
+        let mark = "";
         if (practice?.tasks) {
             const { tasks } = practice;
-            console.log(tasks);
-            isEverythingCorrect = tasks.every(({correctAnswer}, index) => {
-                console.log(correctAnswer, answers[index]);
 
-                return deepEqual(correctAnswer, answers[index])
-            });
+            const results = tasks.map(({correctAnswer}, index) => answers[index] && answerIsCorrect(answers[index], correctAnswer));
+
+            mark = Number(results.filter(Boolean).length / tasks.length).toFixed(1);
         }
 
-        const resultMsg = isEverythingCorrect ? "Красавчик" : "Два в дневник";
-
-        return res.json({result: resultMsg});
+        return res.json({result: Number(mark) * 10});
     })
 
 

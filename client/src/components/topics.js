@@ -75,10 +75,10 @@ export default function Topics() {
 
   return (
     <>
-      <div className="relative bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-stretch justify-center items-center ">
+      <div className="relative bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-center justify-center items-center grow">
         {/* cards */}
         {data?.topics.map(({ _id, name, description, img }) => (
-          <div className="relative min-h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12" 
+          <div className="relative h-[230px] m-5 max-w-sm rounded-lg bg-white shadow-lg sm:m-12" 
                key={_id}
           >
             <img
@@ -97,7 +97,7 @@ export default function Topics() {
               <button
                 onClick={() => handleOpenLessonsModal(_id, name)}
                 type="button"
-                className="bg-primary-orange uppercase shadow-[0_4px_9px_-4px_#ff951c] px-5 py-2 text-sm leading-5 rounded font-semibold text-white
+                className="bg-primary-orange uppercase shadow-[0_4px_9px_-4px_#ff951c] px-5 py-2  leading-5 rounded font-semibold text-white
                  hover:bg-primary-green hover:shadow-[0_8px_9px_-4px_#10B582] hover:scale-110 duration-300 transition ease-in-out
                  focus:bg-primary-green focus:shadow-[0_8px_9px_-4px_#10B582] active:bg-primary-green ">
                 Учить
@@ -106,8 +106,7 @@ export default function Topics() {
           </div>
         ))}
         
-        {modalState.showModal && <LessonModal onClose={handleClose} topicId={modalState.selectedTopicId} name={modalState.selectedName} />}
-
+        <LessonModal isOpen={modalState.showModal} onClose={handleClose} topicId={modalState.selectedTopicId} title={modalState.selectedName} />
       </div>
 
     </>

@@ -30,7 +30,7 @@ export default function Signin() {
 console.log(authData);
   return (
     <div className="sm:h-screen flex items-center justify-center bg-gray-100 ">
-      <div className="min-w-[30%] max-w-[90%] min-h-2/3 flex flex-col items-center justify-center border-solid rounded-xl border-2 drop-shadow-md bg-green-50">
+      <div className="min-w-[30%] max-w-[90%] min-h-2/3 flex flex-col items-center justify-center border-solid rounded-xl border-2 drop-shadow-md bg-white p-5">
         <div className="mx-[10%] ">
           <h1 className="sm:text-5xl text-2xl text-center mt-[7%]">Добро пожаловать!</h1>
           <p className="text-center my-[5%] "> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy 

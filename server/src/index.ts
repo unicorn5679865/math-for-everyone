@@ -20,8 +20,9 @@ const corsOptions = {
       callback(new Error())
     }
   },
+  maxAge: 3600,
   credentials: true,
-}
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
