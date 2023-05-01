@@ -8,6 +8,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { ApiErrorHandler } from "../components/ApiErrorHandler/ApiErrorHandler";
+import { Calendar } from "../components/calendar";
 
 export default () =>  
     <BrowserRouter>
@@ -26,6 +27,9 @@ export default () =>
                         <Route
                             path="/topics"
                             element={<Topics/>} />
+                        <Route
+                            path="/calendar"
+                            element={<Calendar/>} />
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

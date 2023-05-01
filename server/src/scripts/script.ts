@@ -14,37 +14,49 @@ const topics = [
         _id: "1",
         name: "Функция",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic1.jpg"
+        img: "topic1.jpg",
+        startDate: new Date(2023, 5, 1),
+        endDate: new Date(2023, 6, 1),
     },
     {
         _id: "2",
         name: "Тригонометрия",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic2.jpg"
+        img: "topic2.jpg",
+        startDate: new Date(2023, 6, 1),
+        endDate: new Date(2023, 7, 1),
     },
     {
         _id: "3",
         name: "Степень с рациональным показателем. Степенная функция",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic3.jpg"
+        img: "topic3.jpg",
+        startDate: new Date(2023, 7, 1),
+        endDate: new Date(2023, 8, 1),
     },
     {
         _id: "4",
         name: "Введение в стереометрию",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic4.jpg"
+        img: "topic4.jpg",
+        startDate: new Date(2023, 8, 1),
+        endDate: new Date(2023, 9, 1),
     },
     {
         _id: "5",
         name: "Перпендикулярность прямых и плоскостей",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic5.jpg"
+        img: "topic5.jpg",
+        startDate: new Date(2023, 9, 1),
+        endDate: new Date(2023, 10, 1),
     },
     {
         _id: "6",
         name: "Параллельность прямых и плоскостей",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic6.jpg"
+        img: "topic6.jpg",
+        startDate: new Date(2023, 10, 1),
+        endDate: new Date(2023, 11, 1),
     }
 ]
 

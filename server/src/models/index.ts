@@ -5,6 +5,7 @@ import Practice from './practice.model';
 import Task from './task.model';
 import Topic from './topic.model';
 import User from './user.model';
+import UserAnswer from './userAnswer.model';
 
 
 const initDB = () => {
@@ -15,4 +16,4 @@ const initDB = () => {
     db.on("error", (error) => console.error(error));
 };
 
-export { initDB, User, Lesson, Practice, Task, Topic};
+export { initDB, User, Lesson, Practice, Task, Topic, UserAnswer};

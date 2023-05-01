@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 
 const baseUrl = "http://localhost:5000/api";
 
-export const useQuery = (requestInfo) => {
+export const useQuery = (requestInfo, ...dependencies) => {
   const { setErrorStatusCode } = useErrorStatus();
   const [apiData, setApiData] = useState();
 
+  const [trigger, triggerRequest] = useState();
   
   let url, fetchOptions = {};
   if (typeof requestInfo === 'string') {
@@ -30,7 +31,7 @@ export const useQuery = (requestInfo) => {
           setApiData(apiData); 
         }
       );
-  }, [requestInfo]);
+  }, [requestInfo, trigger, ...dependencies]);
   
-  return {data: apiData};
+  return {data: apiData, triggerUpdate: () => triggerRequest({})};
 }

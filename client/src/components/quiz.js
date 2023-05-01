@@ -13,9 +13,10 @@ function SingleSelect ({question, ...inputProps}) {
             <label key={optionIndex} className='label--radio'>
               <input 
                 className='radio'
-                  type='radio'
-                  value={optionIndex}
-                  { ...inputProps}
+                name={question._id}
+                type='radio'
+                value={optionIndex}
+                { ...inputProps}
               />
               {option.text}
             </label>
@@ -35,6 +36,7 @@ function MultiSelect ({question, ...inputProps}) {
             <input
                 className='checkbox'
                 type='checkbox'
+                name={question._id}
                 value={option.value}
                 {...inputProps}
             />
@@ -55,8 +57,9 @@ function TextAnswer ({question, ...inputProps}) {
         <label className='answer-option'>
           <input
             className='text-input block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 rounded-lg p-2'
-              type='text'
-              {...inputProps}
+            type='text'
+            name={question._id}
+            {...inputProps}
           />
         </label>
       </div>   
@@ -85,7 +88,7 @@ export default function Quiz({tasks, onQuizCompleted}) {
 
           <div className='w-full block max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' key={index}>
 
-            {React.createElement(questionComponentByType[question.type], { question, name: index, onChange: form.handleChange })}
+            {React.createElement(questionComponentByType[question.type], { question, onChange: form.handleChange })}
 
           </div>
         ))}

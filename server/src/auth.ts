@@ -30,15 +30,19 @@ export const initGoogleOneTapAuth = () => {
     )
   );
 
-  passport.serializeUser(function({id, name, emails}: any, cb) {
+  interface SerializedUser {
+    id: string;
+    name: string;
+  }
+
+  passport.serializeUser(function({id, name}: any, cb) { // IGoogleUser
     process.nextTick(function() {
-      return cb(null, {id, name, emails});
+      return cb(null, { id, name } as SerializedUser);
     });
   });
   
-  passport.deserializeUser(function(user: UserDocument, cb) {
+  passport.deserializeUser(function(user: SerializedUser, cb) {
     process.nextTick(function() {
-      console.log(user);
       return cb(null, user);
     });
   });

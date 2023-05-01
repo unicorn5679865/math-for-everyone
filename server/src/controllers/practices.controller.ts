@@ -1,7 +1,6 @@
 import express from "express";
-import {Practice} from "../models";
+import { Practice, UserAnswer } from "../models";
 import { TaskDocument } from "../models/task.model";
-import deepEqual from "deep-equal";
 
 const answerIsCorrect = (userAnswer, correctAnswer) => {
     if (typeof correctAnswer === 'string' || typeof correctAnswer === 'number') {
@@ -33,16 +32,18 @@ router
         const answers = req.body
         const practice = await Practice.findById(practiceId).populate<{tasks: TaskDocument[]}>("tasks");
     
-        let mark = "";
+        let mark = 0;
         if (practice?.tasks) {
             const { tasks } = practice;
 
-            const results = tasks.map(({correctAnswer}, index) => answers[index] && answerIsCorrect(answers[index], correctAnswer));
+            const results = tasks.map(({correctAnswer, _id: id}) => answers[id] && answerIsCorrect(answers[id], correctAnswer));
 
-            mark = Number(results.filter(Boolean).length / tasks.length).toFixed(1);
+            mark = Number((results.filter(Boolean).length / tasks.length).toFixed(1)) * 10;
         }
 
-        return res.json({result: Number(mark) * 10});
+        await UserAnswer.updateOne({ user: req.user?.id, practiceId }, {$set: {result: mark}}, {upsert: true});
+
+        return res.json({result: mark});
     })
 
 

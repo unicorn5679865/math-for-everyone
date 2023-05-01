@@ -9,7 +9,7 @@ const navigation = [
   { name: 'Уроки', href: '/topics', current: true },
   { name: 'Оценки', href: '#', current: false },
   { name: 'Проекты', href: '#', current: false },
-  { name: 'Календарь', href: '#', current: false },
+  { name: 'Календарь', href: '/calendar', current: false },
 ]
 
 export default function Header() {

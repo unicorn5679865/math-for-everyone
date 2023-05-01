@@ -6,6 +6,7 @@ interface LessonDocument extends mongoose.Document {
   name: string;
   link: string;
   topicId: Number;
+  practices: string[]
 }
 
 const LessonSchema = new mongoose.Schema({
@@ -21,7 +22,7 @@ const LessonSchema = new mongoose.Schema({
 
   topicId: {
     type: String,
-    required: true, //TODO: Change to required later
+    required: true,
   },
 
   practices: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Practice' }]

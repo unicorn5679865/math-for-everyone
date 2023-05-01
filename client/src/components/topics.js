@@ -74,7 +74,6 @@ export default function Topics() {
   };
 
   return (
-    <>
       <div className="relative bg-gradient-to-br from-black via-transparent to-black bg-fixed flex flex-row flex-wrap items-center justify-center items-center grow">
         {/* cards */}
         {data?.topics.map(({ _id, name, description, img }) => (
@@ -108,8 +107,6 @@ export default function Topics() {
         
         <LessonModal isOpen={modalState.showModal} onClose={handleClose} topicId={modalState.selectedTopicId} title={modalState.selectedName} />
       </div>
-
-    </>
   )
 }
 

@@ -10,12 +10,14 @@ import { api } from "../api/api";
 import MessageModal from "./modals/message.modal";
 import pdf from "./pdf/kursovaya_rabota.pdf"
 import { ExpandablePanel } from "./common/ExpandablePanel";
+import { Practice } from "./common/Practice";
 
 export default function Lesson() {
 
     const { lessonId } = useParams();
     const { data: lesson } = useQuery(`/lessons/${lessonId}`);
     const [ modalState, setModalState] = useState({isOpen: false, message: ""})
+    const { data: progress, triggerUpdate } = useQuery(`/lessons/${lessonId}/progress`);
 
 
     const [numPages, setNumPages] = useState(null);
@@ -26,7 +28,8 @@ export default function Lesson() {
 
     const handleQuizCompleted = async (practiceId, answers) => {
             const res = await api.validateAnswers(practiceId, answers);
-            setModalState({isOpen: true, message: res.data.result })
+            setModalState({isOpen: true, message: res.data.result });
+            triggerUpdate();
     };
 
     const handleClose = () => {
@@ -56,11 +59,9 @@ export default function Lesson() {
                     <div className="overflow-y-scroll">
                     {
                         lesson?.practices.map(practice => (
-                            <div className="practice-container flex flex-col mb-4" key={practice._id}>
-                                <ExpandablePanel text={practice.name} className="bg-primary-green">
-                                    <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
-                                </ExpandablePanel>
-                            </div>
+                            <Practice isCompleted={!!progress[practice._id]} text={practice.name} key={practice._id}>
+                                <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
+                            </Practice>
                         ))
                     }
                     </div>
