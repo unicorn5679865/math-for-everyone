@@ -8,7 +8,7 @@ import { useQuery } from "../hooks/useQuery";
 import Quiz from "./quiz";
 import { api } from "../api/api";
 import MessageModal from "./modals/message.modal";
-import pdf from "./pdf/kursovaya_rabota.pdf"
+// import pdf from "./pdf/kursovaya_rabota.pdf"
 import { ExpandablePanel } from "./common/ExpandablePanel";
 import { Practice } from "./common/Practice";
 
@@ -43,7 +43,7 @@ export default function Lesson() {
                         <p className="text-xl border-b-2 ">Теория</p>
                     </div>
                     <div className="scrollbar overflow-y-scroll  ">
-                        <Document className="w-full" file={pdf} onLoadSuccess={handleDocumentLoadSuccess}>
+                        <Document className="w-full" file={lesson?.link} onLoadSuccess={handleDocumentLoadSuccess}>
                             {
                                 Array(numPages).fill().map((_, i) =>
                                     <Page key={i} pageNumber={i+1} />

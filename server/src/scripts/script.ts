@@ -12,7 +12,7 @@ mongoose.connect(`${process.env.MONGO_URI}`);
 const topics = [
     {
         _id: "1",
-        name: "Функция",
+        name: "Тригонометрия",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         img: "topic1.jpg",
         startDate: new Date(2023, 5, 1),
@@ -20,7 +20,7 @@ const topics = [
     },
     {
         _id: "2",
-        name: "Тригонометрия",
+        name: "Производная",
         description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         img: "topic2.jpg",
         startDate: new Date(2023, 6, 1),
@@ -62,33 +62,102 @@ const topics = [
 
 const tasks= [
     {
-        question: 'Что означает аббревиатура HTML?',
+        question: 'Выразите в радианах угл 120^0 ',
         type: "SelectOne",
         options: [
-          { text: 'HyperText Markup Language', value: "0" },
-          { text: 'HyperText Makeup Language', value: "1"},
-          { text: 'HyperText Model Language',  value: "2" },
+          { text: '2* pi/3', value: "0" },
+          { text: '5*pi/6', value: "1"},
+          { text: '4*pi/3',  value: "2" },
         ],
         correctAnswer: "0",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Какой тег используется для создания заголовка на веб-странице?',
-        type: "TextAnswer",
-        correctAnswer: "<title>",
+        question: 'Выразите в радианах угл 150^0 ',
+        type: "SelectOne",
+        options: [
+          { text: '5* pi/3', value: "0" },
+          { text: '5*pi/6', value: "1"},
+          { text: '7*pi/6',  value: "2" },
+        ],
+        correctAnswer: "1",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Какая функция JavaScript используется для создания объектов?',
-        type: "SelectMultiple",
-        options: [
-          { text: 'Object.create()', value: "0" },
-          { text: 'Object.new()', value: "1"},
-          { text: 'Object.build()', value: "2" },
-        ],
-        correctAnswer: ["1", "2"],
+        question: 'Выразите в градусах угол pi/12',
+        type: "TextAnswer",
+        correctAnswer: "15",
         _id: new mongoose.Types.ObjectId(),
-      }
+      },
+      {
+        question: 'Выразите в градусах угол 5*pi/2',
+        type: "TextAnswer",
+        correctAnswer: "450",
+        _id: new mongoose.Types.ObjectId(),
+      },
+      {
+        question: 'Выразите в градусах угол равный 3 рад',
+        type: "TextAnswer",
+        correctAnswer: "172",
+        _id: new mongoose.Types.ObjectId(),
+      },
+      {
+        question: 'Определите, углом какой четверти является угол равный -189, если: ',
+        type: "SelectOne",
+        options: [
+          { text: 'первой', value: "0" },
+          { text: 'второй', value: "1"},
+          { text: 'третьей',  value: "2" },
+          { text: 'четвертой',  value: "2" },
+        ],
+        correctAnswer: "1",
+        _id: new mongoose.Types.ObjectId(),
+      },
+      {
+        question: 'Определите, углом какой четверти является угол равный 11*pi/5, если: ',
+        type: "SelectOne",
+        options: [
+          { text: 'первой', value: "0" },
+          { text: 'второй', value: "1"},
+          { text: 'третьей',  value: "2" },
+          { text: 'четвертой',  value: "2" },
+        ],
+        correctAnswer: "0",
+        _id: new mongoose.Types.ObjectId(),
+      },
+      {
+        question: 'Выразите в радианах угл 150^0 ',
+        type: "SelectOne",
+        options: [
+            { text: 'pi/3', value: "0" },
+            { text: '5*pi/6', value: "1"},
+            { text: '5*pi/4', value: "2" },
+        ],
+        correctAnswer: "1",
+        _id: new mongoose.Types.ObjectId(),
+      },
+      {
+        question: 'Определите вид треугольника, если радианная мера двух его углов равна 2*π/5 и 3π/10.',
+        type: "SelectOne",
+        options: [
+          { text: 'равносторониий', value: "0" },
+          { text: 'разносторнний', value: "1"},
+          { text: 'равнобедренный', value: "2" },
+        ],
+        correctAnswer: "2",
+        _id: new mongoose.Types.ObjectId(),
+      },
+    //   {
+    //     question: 'Определите вид треугольника, если радианная мера двух его углов равна 2*π/5 и 3π/10.',
+    //     type: "SelectMultiple",
+    //     options: [
+    //       { text: 'равносторониий', value: "0" },
+    //       { text: 'разносторнний', value: "1"},
+    //       { text: 'равнобедренный', value: "2" },
+    //     ],
+    //     correctAnswer: ["1", "2"],
+    //     _id: new mongoose.Types.ObjectId(),
+    //   },
 ]
 
 const practices = [
@@ -110,78 +179,174 @@ const practices = [
 
 const lessons = [
     {
-        name: "Определение числовой функции и способы ее задания ",
-        link: "google.com",
+        name: "Единичная окружность.Градусное и радианное измерения произвольных углов",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Единичная окружность. Градусная и радианная мера произвольного угла.pdf",
         topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
         practices: [practices[0]._id, practices[1]._id]
     },
     {
-        name: "Четность и нечетность функции. Периодичность",
-        link: "google.com",
-        topicId: topics[0]._id,
-        _id: new mongoose.Types.ObjectId(),
-    },
-    {
-        name: "Возрастание и убывание, точки максимума и минимума; максимум и минимум, наибольшее и наименьшее значения функции на промежутке",
-        link: "google.com",
-        topicId: topics[0]._id,
-        _id: new mongoose.Types.ObjectId(),
-    },
-    {
-        name: "Преобразования графиков функции",
-        link: "google.com",
-        topicId: topics[0]._id,
-        _id: new mongoose.Types.ObjectId(),
-    },
-    {
-        name: "Бесконечно убывающая геометрическая прогрессия как функция натурального аргумента. Сумма членов бесконечно убывающей геометрической прогрессии",
-        link: "google.com",
-        topicId: topics[0]._id,
-        _id: new mongoose.Types.ObjectId(),
-    },
-    {
-        name: "Единичная окружность.Градусное и радианное измерения произвольных углов",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
-        _id: new mongoose.Types.ObjectId(),
-    },
-    {
         name: "Синус и косинус произвольного угла",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
     },
     {
         name: "Тангенс и котангенс произвольного угла",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
     },
     {
         name: "Соотношения между синусом, косинусом,тангенсом и котангенсом одного и того же угла",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
     },
     {
         name: "Функции y = sinx и y = cosx. Их свойства и графики. Функция y = tgx. Её свойства и график.",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
     },
     {
         name: "Понятия арксинуса, арккосинуса, арктангенса и арккотангенса",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
-        topicId: topics[1]._id,
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
         _id: new mongoose.Types.ObjectId(),
     },
     {
         name: "Простейшие тригонометрические уравнения sin(x) = a, cos(x) = a, tg(x) = a ",
-        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/план-конспект.pdf",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[0]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Определение производной функции",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[1]._id,
+        _id: new mongoose.Types.ObjectId(),
+        practices: [practices[0]._id, practices[1]._id]
+    },
+    {
+        name: "Правила вычисления производных",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
         topicId: topics[1]._id,
         _id: new mongoose.Types.ObjectId(),
     },
+    {
+        name: "Геометрический смысл производной. Связь между знаком производной функции и ее возрастанием или убыванием",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[1]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Применение производной к исследованию функций",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[1]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Наибольшее и наименьшее значения функции",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[1]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    
+    {
+        name: "Корень n-й степени из числа а",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[2]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Свойства корней n-й степени",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[2]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Применение свойств корней n-й степени для преобразования выражений",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[2]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Свойства и график функции y = корень n-ой степени из x",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[2]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Иррациональные уравнения",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[2]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Пространственные фигуры",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[3]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Прямые и плоскости",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[3]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Построения сечений многогранников",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[3]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Взаимное расположение прямых в пространстве",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[4]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Взаимное расположение прямой и плоскости в пространстве",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[4]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Взаимное расположение плоскостей в пространстве ",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[4]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Перпендикулярность прямой и плоскости",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[5]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Расстояния",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[5]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Угол между прямой и плоскостью",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[5]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+    {
+        name: "Перпендикулярность плоскостей ",
+        link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
+        topicId: topics[5]._id,
+        _id: new mongoose.Types.ObjectId(),
+    },
+
+
+    // разые не должен ли topicId совпадать с topics[]
+
 ];
 
 

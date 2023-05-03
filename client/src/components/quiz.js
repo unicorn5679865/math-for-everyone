@@ -4,7 +4,6 @@ import Button from "./common/Button";
 
 
 function SingleSelect ({question, ...inputProps}) {
-
   return (
     <>
       <div className='question-text'>{question.question}</div>
