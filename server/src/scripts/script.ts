@@ -62,35 +62,35 @@ const topics = [
 
 const tasks= [
     {
-        question: 'Выразите в радианах угл 120^0 ',
+        question: 'Выразите в радианах угл \\( 120^o \\) ',
         type: "SelectOne",
         options: [
-          { text: '2* pi/3', value: "0" },
-          { text: '5*pi/6', value: "1"},
-          { text: '4*pi/3',  value: "2" },
+          { text: '\\( {2 \\pi \\over 3}\\)', value: "0" },
+          { text: '\\( {5 \\pi \\over 6}\\)', value: "1"},
+          { text: '\\( {4 \\pi \\over 3}\\)',  value: "2" },
         ],
         correctAnswer: "0",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Выразите в радианах угл 150^0 ',
+        question: 'Выразите в радианах угл \\( 150^o \\)',
         type: "SelectOne",
         options: [
-          { text: '5* pi/3', value: "0" },
-          { text: '5*pi/6', value: "1"},
-          { text: '7*pi/6',  value: "2" },
+          { text: '\\( {5 \\pi \\over 3}\\)', value: "0" },
+          { text: '\\( {5 \\pi \\over 6}\\)', value: "1"},
+          { text: '\\( {7 \\pi \\over 6}.\\)',  value: "2" },
         ],
         correctAnswer: "1",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Выразите в градусах угол pi/12',
+        question: 'Выразите в градусах угол \\( { \\pi \\over 12}.\\) ',
         type: "TextAnswer",
         correctAnswer: "15",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Выразите в градусах угол 5*pi/2',
+        question: 'Выразите в градусах угол \\( {5 \\pi \\over 2}.\\) ',
         type: "TextAnswer",
         correctAnswer: "450",
         _id: new mongoose.Types.ObjectId(),
@@ -102,7 +102,7 @@ const tasks= [
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Определите, углом какой четверти является угол равный -189, если: ',
+        question: 'Определите, углом какой четверти является угол равный \\( -189^о\\), если: ',
         type: "SelectOne",
         options: [
           { text: 'первой', value: "0" },
@@ -114,7 +114,7 @@ const tasks= [
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Определите, углом какой четверти является угол равный 11*pi/5, если: ',
+        question: 'Определите, углом какой четверти является угол равный \\( { 11\\pi \\over 5}\\), если: ',
         type: "SelectOne",
         options: [
           { text: 'первой', value: "0" },
@@ -126,18 +126,18 @@ const tasks= [
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Выразите в радианах угл 150^0 ',
+        question: 'Выразите в радианах угл \\( 150^o \\)',
         type: "SelectOne",
         options: [
-            { text: 'pi/3', value: "0" },
-            { text: '5*pi/6', value: "1"},
-            { text: '5*pi/4', value: "2" },
+            { text: '\\( { \\pi \\over 3}\\)', value: "0" },
+            { text: '\\( { 5\\pi \\over 6}\\)', value: "1"},
+            { text: '\\( { 5\\pi \\over 4}\\)', value: "2" },
         ],
         correctAnswer: "1",
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Определите вид треугольника, если радианная мера двух его углов равна 2*π/5 и 3π/10.',
+        question: 'Определите вид треугольника, если радианная мера двух его углов равна \\( { 2\\pi \\over 5}\\) и \\( { 3\\pi \\over 10}\\)',
         type: "SelectOne",
         options: [
           { text: 'равносторониий', value: "0" },

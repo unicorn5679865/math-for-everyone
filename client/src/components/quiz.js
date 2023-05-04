@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  {useEffect} from 'react';
 import { useFormik } from 'formik';
 import Button from "./common/Button";
 
@@ -28,7 +28,7 @@ function SingleSelect ({question, ...inputProps}) {
 function MultiSelect ({question, ...inputProps}) {
   return (
     <>
-    <div className='question-text'>{question.question}</div>
+    <div className='question-text'></div>
       <div className='answer-section flex flex-col justify-between mb-[0.5rem] min-h-[1.5rem] px-[1.5rem]'>
         {question.options.map((option, optionIndex) => (
           <label key={optionIndex} className='label--checkbox'>
@@ -79,6 +79,11 @@ export default function Quiz({tasks, onQuizCompleted}) {
     onSubmit: onQuizCompleted
   });
 
+  useEffect ( ()=> { 
+    if ( typeof  window ?. MathJax !== "undefined" ){ 
+      window . MathJax . typeset () 
+    } 
+  },[]) 
 
   return (
     <form className='quiz flex flex-col p-3' onSubmit={form.handleSubmit}>
