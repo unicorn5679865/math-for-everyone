@@ -9,57 +9,6 @@ dotenv.config();
 
 mongoose.connect(`${process.env.MONGO_URI}`);
 
-const topics = [
-    {
-        _id: "1",
-        name: "Тригонометрия",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic1.jpg",
-        startDate: new Date(2023, 5, 1),
-        endDate: new Date(2023, 6, 1),
-    },
-    {
-        _id: "2",
-        name: "Производная",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic2.jpg",
-        startDate: new Date(2023, 6, 1),
-        endDate: new Date(2023, 7, 1),
-    },
-    {
-        _id: "3",
-        name: "Степень с рациональным показателем. Степенная функция",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic3.jpg",
-        startDate: new Date(2023, 7, 1),
-        endDate: new Date(2023, 8, 1),
-    },
-    {
-        _id: "4",
-        name: "Введение в стереометрию",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic4.jpg",
-        startDate: new Date(2023, 8, 1),
-        endDate: new Date(2023, 9, 1),
-    },
-    {
-        _id: "5",
-        name: "Перпендикулярность прямых и плоскостей",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic5.jpg",
-        startDate: new Date(2023, 9, 1),
-        endDate: new Date(2023, 10, 1),
-    },
-    {
-        _id: "6",
-        name: "Параллельность прямых и плоскостей",
-        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        img: "topic6.jpg",
-        startDate: new Date(2023, 10, 1),
-        endDate: new Date(2023, 11, 1),
-    }
-]
-
 const tasks= [
     {
         question: 'Выразите в радианах угл \\( 120^o \\) ',
@@ -114,7 +63,7 @@ const tasks= [
         _id: new mongoose.Types.ObjectId(),
       },
       {
-        question: 'Определите, углом какой четверти является угол равный \\( { 11\\pi \\over 5}\\), если: ',
+        question: 'Определите, углом какой четверти является угол равный \\( { 11 \\pi \\over 5}\\), если: ',
         type: "SelectOne",
         options: [
           { text: 'первой', value: "0" },
@@ -174,8 +123,67 @@ const practices = [
         tasks: [
             ...tasks.map(t => t._id)
         ]
-    }
+    },
+    {
+        name: "Контроль по теме 'тригонометрия'",
+        _id: new mongoose.Types.ObjectId(),
+        tasks: [
+            ...tasks.map(t => t._id)
+        ]
+    },
 ];
+
+const topics = [
+    {
+        _id: "1",
+        name: "Тригонометрия",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic1.jpg",
+        startDate: new Date(2023, 5, 1),
+        endDate: new Date(2023, 6, 1),
+        finalPractice: practices[2]._id,
+    },
+    {
+        _id: "2",
+        name: "Производная",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic2.jpg",
+        startDate: new Date(2023, 6, 1),
+        endDate: new Date(2023, 7, 1),
+    },
+    {
+        _id: "3",
+        name: "Степень с рациональным показателем. Степенная функция",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic3.jpg",
+        startDate: new Date(2023, 7, 1),
+        endDate: new Date(2023, 8, 1),
+    },
+    {
+        _id: "4",
+        name: "Введение в стереометрию",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic4.jpg",
+        startDate: new Date(2023, 8, 1),
+        endDate: new Date(2023, 9, 1),
+    },
+    {
+        _id: "5",
+        name: "Перпендикулярность прямых и плоскостей",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic5.jpg",
+        startDate: new Date(2023, 9, 1),
+        endDate: new Date(2023, 10, 1),
+    },
+    {
+        _id: "6",
+        name: "Параллельность прямых и плоскостей",
+        description: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        img: "topic6.jpg",
+        startDate: new Date(2023, 10, 1),
+        endDate: new Date(2023, 11, 1),
+    }
+]
 
 const lessons = [
     {

@@ -18,6 +18,12 @@ const PracticeSchema = new mongoose.Schema({
     tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
 
     _id: String,
+}, { toJSON: { virtuals: true }, toObject: { virtuals: true }});
+
+PracticeSchema.virtual("userResult", {
+  ref: 'UserAnswer',
+  localField: '_id',
+  foreignField: 'practiceId'
 });
 
 export default mongoose.model<PracticeDocument>("Practice", PracticeSchema);

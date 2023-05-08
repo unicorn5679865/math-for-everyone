@@ -9,6 +9,8 @@ import Footer from "../components/footer";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { ApiErrorHandler } from "../components/ApiErrorHandler/ApiErrorHandler";
 import { Calendar } from "../components/calendar";
+import TopicsForControl from "../components/topicControl/topicsForControl";
+import TopicFinalTest from "../components/topicControl/topicFinalTest";
 
 export default () =>  
     <BrowserRouter>
@@ -30,6 +32,12 @@ export default () =>
                         <Route
                             path="/calendar"
                             element={<Calendar/>} />
+                        <Route
+                            path="/knowledge-control"
+                            element={<TopicsForControl/>} />
+                        <Route
+                            path="/knowledge-control/:topicId"
+                            element={<TopicFinalTest/>} />
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

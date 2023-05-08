@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 
 const navigation = [
   { name: 'Уроки', href: '/topics', current: true },
+  { name: 'Контроль', href: '/knowledge-control', current: false },
   { name: 'Оценки', href: '#', current: false },
   { name: 'Проекты', href: '#', current: false },
   { name: 'Календарь', href: '/calendar', current: false },

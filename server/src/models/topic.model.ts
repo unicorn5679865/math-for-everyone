@@ -27,6 +27,7 @@ const TopicSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  finalPractice: { type: mongoose.Schema.Types.ObjectId, ref: 'Practice' },
   _id: String,
 }, { toJSON: { virtuals: true }, toObject: { virtuals: true }
 });
