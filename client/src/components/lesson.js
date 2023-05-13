@@ -4,12 +4,10 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { useParams } from "react-router";
 import { useQuery } from "../hooks/useQuery";
-
-import Quiz from "./quiz";
 import { api } from "../api/api";
 import MessageModal from "./modals/message.modal";
-// import pdf from "./pdf/kursovaya_rabota.pdf"
-import { ExpandablePanel } from "./common/ExpandablePanel";
+
+import Quiz from "./quiz";
 import { Practice } from "./common/Practice";
 
 export default function Lesson() {
@@ -52,11 +50,12 @@ export default function Lesson() {
                         </Document>  
                     </div>
                 </div>
+
                 <div className="practice flex flex-col mx-10 sm:mr-10 sm:w-5/12 text-left">
                     <div className="mt-3 py-4">
                         <p className="text-xl border-b-2">Практика</p>
                     </div>
-                    <div className="overflow-y-scroll">
+                    <div className="scrollbar overflow-y-scroll">
                     {
                         lesson?.practices.map(practice => (
                             <Practice isCompleted={!!progress[practice._id]} text={practice.name} key={practice._id}>

@@ -3,53 +3,6 @@ import { useQuery } from "../hooks/useQuery";
 import LessonModal from "./modals/lesson.modal"
 
 
-
-// const CARDS = [
-//   {
-//     id: 1,
-//     link: "https://twitter.com",
-//     name: "Функция",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/функция2.jpg"
-//   },
-//   {
-//     id: 2,
-//     link: "https://twitter.com",
-//     name: "Тригонометрия",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/Тригонометрия.jpg"
-//   },
-//   {
-//     id: 3,
-//     link: "https://twitter.com",
-//     name: "Степень с рациональным показателем. Степенная функция",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/степенная.jpg"
-//   },
-//   {
-//     id: 4,
-//     link: "https://twitter.com",
-//     name: "Введение в стереометрию",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/стереометрия.jpg"
-//   },
-//   {
-//     id: 5,
-//     link: "https://twitter.com",
-//     name: "Перпендикулярность прямых и плоскостей",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/перпендикулярность.jpg"
-//   },
-//   {
-//     id: 6,
-//     link: "https://twitter.com",
-//     name: "Параллельность прямых и плоскостей",
-//     text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-//     image: "img/параллельность.jpg"
-//   },
-// ]
-
-
 export default function Topics() {
   const [modalState, setModalState] = useState({
     showModal: false,
