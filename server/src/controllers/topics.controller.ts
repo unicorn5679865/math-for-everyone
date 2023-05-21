@@ -16,7 +16,7 @@ router
         } else if (withFinalResults) {
             topics = await Topic.find({}).populate({path: "finalPractice", populate: {path: "userResults"}}).exec();
 
-            topics.finalPractice.userResults = topics.finalPractice.userResults.filter(({user: userId}) => userId === req.user!.id);
+            topics.finalPractice.userResults = topics.toJSON().finalPractice.userResults.filter(({user: userId}) => userId === req.user!.id);
         } else {
             topics = await Topic.find({});
         }
