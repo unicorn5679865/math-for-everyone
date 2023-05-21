@@ -234,7 +234,7 @@ const lessons = [
         link: "https://pub-d9e4b0a96273484eb6b699e01fd1a677.r2.dev/Теория для урока.pdf",
         topicId: topics[1]._id,
         _id: new mongoose.Types.ObjectId(),
-        practices: [practices[0]._id, practices[1]._id]
+        // practices: [practices[0]._id, practices[1]._id]
     },
     {
         name: "Правила вычисления производных",
@@ -352,8 +352,6 @@ const lessons = [
         _id: new mongoose.Types.ObjectId(),
     },
 
-
-    // разые не должен ли topicId совпадать с topics[]
 
 ];
 

@@ -57,7 +57,7 @@ export function Calendar() {
     };
 
     return (
-        <div className="mb-3 h-full w-full">
+        <div className="mb-3  w-full ">
             {calendarData && <Gantt tasks={calendarData} locale='ru' listCellWidth={window.innerWidth > 800 ? "160px" : ""} onExpanderClick={handleExpanderClick}/>}
         </div>
     );

@@ -22,7 +22,7 @@ export default function Signin() {
 
     window.google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
-      { theme: "outline", size: "large"}
+      { theme: "outline", size: "large" }
     )
     window.google.accounts.id.prompt();
   }, []);

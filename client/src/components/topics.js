@@ -62,9 +62,3 @@ export default function Topics() {
       </div>
   )
 }
-
-
-
-
-
-// проверить цвета,  что такое data-te-ripple-color and data-te-ripple-init
