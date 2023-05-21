@@ -14,13 +14,15 @@ router
         if (withLessons) {
             topics = await Topic.find({}).populate("lessons").exec();
         } else if (withFinalResults) {
-            topics = await Topic.find({}).populate({path: "finalPractice", populate: {path: "userResult"}}).exec();
+            topics = await Topic.find({}).populate({path: "finalPractice", populate: {path: "userResults"}}).exec();
+
+            topics.finalPractice.userResults = topics.finalPractice.userResults.filter(({user: userId}) => userId === req.user!.id);
         } else {
             topics = await Topic.find({});
         }
 
         
-        return res.json({topics: topics, user: req.user});
+        return res.json({topics: topics});
     })
     .get("/:topicId/lessons", async (req, res) => {
         console.log(req.params);

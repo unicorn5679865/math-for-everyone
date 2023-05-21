@@ -20,7 +20,7 @@ const PracticeSchema = new mongoose.Schema({
     _id: String,
 }, { toJSON: { virtuals: true }, toObject: { virtuals: true }});
 
-PracticeSchema.virtual("userResult", {
+PracticeSchema.virtual("userResults", {
   ref: 'UserAnswer',
   localField: '_id',
   foreignField: 'practiceId'
