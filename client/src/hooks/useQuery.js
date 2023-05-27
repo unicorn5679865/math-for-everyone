@@ -33,5 +33,5 @@ export const useQuery = (requestInfo, ...dependencies) => {
       );
   }, [requestInfo, trigger, ...dependencies]);
   
-  return {data: apiData, triggerUpdate: () => triggerRequest({})};
+  return {data: apiData, refresh: () => triggerRequest()};
 }

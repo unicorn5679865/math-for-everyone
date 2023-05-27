@@ -25,7 +25,7 @@ router
             practiceId: {$in: lesson!.practices},
             result: 10
         })).reduce((acc, userAnswer) => {
-            acc[userAnswer.practiceId as string] = true
+            acc[userAnswer.practiceId] = true
             return acc;
         }, {});
 

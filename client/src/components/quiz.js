@@ -73,30 +73,36 @@ const questionComponentByType = {
     "TextAnswer": TextAnswer,
 };
 
-export default function Quiz({tasks, onQuizCompleted}) {
+export default function Quiz({tasks, onQuizCompleted, userResults, oneAttempt}) {
   const form = useFormik({
     initialValues: {},
     onSubmit: onQuizCompleted
   });
 
-  useEffect ( ()=> { 
+  useEffect (() => { 
     if ( typeof  window ?. MathJax !== "undefined" ){ 
       window . MathJax . typeset () 
     } 
-  },[]) 
+  },[]);
+
+  const getQuestionBgClass = (questionId) => {
+    if (!userResults) return 'bg-white';
+
+    return userResults[questionId] ? 'bg-green-50' : 'bg-red-50';
+  };
 
   return (
     <form className='quiz flex flex-col p-3' onSubmit={form.handleSubmit}>
       <div className='questions-section flex flex-col gap-4 items-center w-full'>
         {tasks.map((question, index) => (
-          <div className='w-full block max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' key={index}>
+          <div className={`w-full block max-w-lg p-6 ${getQuestionBgClass(question._id)} border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`} key={index}>
 
             {React.createElement(questionComponentByType[question.type], { question, onChange: form.handleChange })}
 
           </div>
         ))}
       </div>
-      <Button className='m-auto mt-4' type='submit'>Получить 2 в дневник</Button>
+      {!(oneAttempt && userResults) && <Button className='m-auto mt-4' type='submit'>Получить 2 в дневник</Button>}
     </form>
   );
 }

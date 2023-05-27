@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.ts",
+    "dev": "nodemon ./src/index.ts --watch src ",
     "build": "rm -rf && tsc",
     "importLessons": "ts-node ./src/scripts/script.ts"
   },
@@ -19,7 +19,8 @@
     "google-auth-library": "^8.7.0",
     "mongoose": "^7.0.3",
     "passport": "^0.6.0",
-    "passport-google-one-tap": "^1.0.0"
+    "passport-google-one-tap": "^1.0.0",
+    "session-file-store": "^1.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

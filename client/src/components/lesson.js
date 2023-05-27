@@ -14,9 +14,10 @@ export default function Lesson() {
 
     const { lessonId } = useParams();
     const { data: lesson } = useQuery(`/lessons/${lessonId}`);
-    const [ modalState, setModalState] = useState({isOpen: false, message: ""})
-    const { data: progress, triggerUpdate } = useQuery(`/lessons/${lessonId}/progress`);
+    const { data: progress, refresh: refreshProgress } = useQuery(`/lessons/${lessonId}/progress`);
 
+    const [ modalState, setModalState] = useState({isOpen: false, message: ""});
+    const [recentResults, setRecentResults] = useState({});
 
     const [numPages, setNumPages] = useState(null);
 
@@ -25,9 +26,13 @@ export default function Lesson() {
     };
 
     const handleQuizCompleted = async (practiceId, answers) => {
-            const res = await api.validateAnswers(practiceId, answers);
-            setModalState({isOpen: true, message: res.data.result });
-            triggerUpdate();
+        const res = await api.validateAnswers(practiceId, answers);
+        setModalState({isOpen: true, message: `Оценка: ${res.data.mark}.` });
+        setRecentResults((prevState) => ({
+            ...prevState,
+            [practiceId]: res.data.results,
+        }));
+        refreshProgress();
     };
 
     const handleClose = () => {
@@ -36,9 +41,9 @@ export default function Lesson() {
 
     return (
             <div className="sm:flex justify-start mb-3 h-full"> 
-                <div className="theory flex flex-col ml-4  sm:w-7/12 text-left">
-                    <div className="mt-3 py-4 ">
-                        <p className="text-xl border-b-2 ">Теория</p>
+                <div className="theory flex flex-col ml-4 sm:w-7/12 text-left">
+                    <div className="mt-3 py-4">
+                        <p className="text-xl border-b-2">Теория</p>
                     </div>
                     <div className="scrollbar overflow-y-scroll  ">
                         <Document className="w-full" file={lesson?.link} onLoadSuccess={handleDocumentLoadSuccess}>
@@ -59,7 +64,7 @@ export default function Lesson() {
                     {
                         lesson?.practices.map(practice => (
                             <Practice isCompleted={!!progress[practice._id]} text={practice.name} key={practice._id}>
-                                <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} />
+                                <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} userResults={recentResults[practice._id]}/>
                             </Practice>
                         ))
                     }

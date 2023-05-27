@@ -6,6 +6,9 @@ import { initDB } from "./models";
 import passport from "passport";
 import { initGoogleOneTapAuth } from "./auth";
 
+import session from 'express-session';
+import FileStore from 'session-file-store';
+
 dotenv.config();
 
 const app = express();
@@ -28,7 +31,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(
-  require("express-session")({
+  session({
+    store: new (FileStore(session))({}),
     secret: "gUYGkglhg;L",
     resave: true,
     saveUninitialized: false,

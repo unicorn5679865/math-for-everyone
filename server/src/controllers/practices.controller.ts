@@ -29,21 +29,28 @@ router
     })
     .post("/:practiceId/check", async (req, res) => {
         const { practiceId } = req.params; 
-        const answers = req.body
+        const userAnswers = req.body
         const practice = await Practice.findById(practiceId).populate<{tasks: TaskDocument[]}>("tasks");
-    
-        let mark = 0;
+
+        let mark = 0
         if (practice?.tasks) {
             const { tasks } = practice;
 
-            const results = tasks.map(({correctAnswer, _id: id}) => answers[id] && answerIsCorrect(answers[id], correctAnswer));
+            const resultsMap = tasks.reduce((acc, {correctAnswer, _id: questionId}) => ({
+                ...acc,
+                [questionId]: userAnswers[questionId] && answerIsCorrect(userAnswers[questionId], correctAnswer),
+            }), {});
 
-            mark = Number((results.filter(Boolean).length / tasks.length).toFixed(1)) * 10;
+            mark = Number(
+                (Object.values(resultsMap).filter(Boolean).length / Object.keys(resultsMap).length).toFixed(1)
+            ) * 10;
+
+            await UserAnswer.updateOne({ user: req.user?.id, practiceId }, {$set: {result: mark}}, {upsert: true});
+
+            return res.json({mark, results: resultsMap});
         }
 
-        await UserAnswer.updateOne({ user: req.user?.id, practiceId }, {$set: {result: mark}}, {upsert: true});
-
-        return res.json({result: mark});
+        return res.sendStatus(202);
     })
 
 
