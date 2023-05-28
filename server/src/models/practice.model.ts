@@ -3,7 +3,6 @@ import type { Document } from "mongoose";
 
 
 export interface PracticeDocument extends Document {
-  isCompleted?: boolean;
   practiceId: string;
   correctAnswer: string;
   options: string;

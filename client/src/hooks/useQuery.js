@@ -8,18 +8,28 @@ export const useQuery = (url, dependencies=[]) => {
   const [apiData, setApiData] = useState();
 
   const fetchData = useCallback(() => {
-    return fetch(baseUrl + url, {credentials: 'include'})
-            .then(res => {
-              if (res.status >= 400) {
-                return setErrorStatusCode(res.status)
-              }
+    let dataUrls;
+    if (typeof url === 'string') {
+      dataUrls = [url];
+    } else {
+      dataUrls = url
+    }
 
-              return res.json();
-            })
-            .then(apiData => {
-                setApiData(apiData); 
-              }
-            );
+    Promise.all(
+      dataUrls.map(url => fetch(baseUrl + url, {credentials: 'include'}))
+    ).then(responses => {
+      const failedResponse = responses.find(res => !res.ok || res.status >= 400);
+      if (failedResponse) {
+        setErrorStatusCode(failedResponse.status);
+        return Promise.reject(failedResponse);
+      }
+
+      return Promise.all(responses.map(res => res.json()));
+    })
+    .then(apiData => {
+        setApiData(apiData.length === 1 ? apiData[0] : apiData); 
+    })
+
   }, [url, ...dependencies])
 
   useEffect (() => {

@@ -1,6 +1,7 @@
 import express from "express";
 import { Practice, UserAnswer } from "../models";
 import { TaskDocument } from "../models/task.model";
+import keyBy from "lodash/keyBy";
 
 const answerIsCorrect = (userAnswer, correctAnswer) => {
     if (typeof correctAnswer === 'string' || typeof correctAnswer === 'number') {
@@ -21,6 +22,12 @@ const router = express.Router();
 router
     .get("/", async (req, res) => {
         return res.json({lessons: await Practice.find({}), user: req.user});
+    })
+    .get("/stats", async (req, res) => {
+        const userAnswers = await UserAnswer.find({user: req.user!.id});
+        const userAnswersMap = keyBy(userAnswers.map(m => m.toObject()), 'practiceId');
+        
+        return res.json(userAnswersMap);
     })
     .get("/:practiceId", async (req, res) => {
         const { practiceId } = req.params; 

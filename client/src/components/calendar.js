@@ -3,13 +3,31 @@ import "gantt-task-react/dist/index.css";
 import { useQuery } from '../hooks/useQuery';
 import { useEffect, useState } from 'react';
 
+const MAX_GRADE = 10;
+const dataUrls = ["/topics?withLessons=true", "/practices/stats"];
 export function Calendar() {
-    const {data} = useQuery("/topics?withLessons=true");
+    const {data} = useQuery(dataUrls);
 
     const [calendarData, setCalendarData] = useState(null);
 
+    const getProgressByPracticeResults = (practiceIds) => {
+        if (!practiceIds.length) {
+            return 0;
+        }
+
+        const allUserResults = data[1];
+        const maxPossibleResult = practiceIds.length * MAX_GRADE;
+        const userTotalResult = practiceIds.reduce((acc, practiceId) => {
+            const practiceResult = allUserResults[practiceId]?.result || 0;
+
+            return acc + practiceResult;
+        }, 0);
+
+        return userTotalResult / maxPossibleResult * 100;
+    }
+
     useEffect(() => {
-        const preparedData = data?.topics.reduce((acc, topic) => {
+        const preparedData = data?.[0].topics.reduce((acc, topic) => {
             const parentTopic = {
                 start: new Date(topic.startDate),
                 end: new Date(topic.endDate),
@@ -39,7 +57,7 @@ export function Calendar() {
                         id: lesson._id,
                         dependencies: index === 0 ? [] : [acc[acc.length - 1].id],
                         type: 'task',
-                        progress: 100,
+                        progress: getProgressByPracticeResults(lesson.practices),
                         isDisabled: true,
                     })
                 });

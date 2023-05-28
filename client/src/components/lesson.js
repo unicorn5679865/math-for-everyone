@@ -63,7 +63,7 @@ export default function Lesson() {
                     <div className="scrollbar overflow-y-scroll">
                     {
                         lesson?.practices.map(practice => (
-                            <Practice isCompleted={!!progress[practice._id]} text={practice.name} key={practice._id}>
+                            <Practice currentProgress={progress[practice._id]} text={practice.name} key={practice._id}>
                                 <Quiz tasks={practice.tasks} onQuizCompleted={(answers) => handleQuizCompleted(practice._id, answers)} userResults={recentResults[practice._id]}/>
                             </Practice>
                         ))

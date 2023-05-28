@@ -23,9 +23,8 @@ router
         const userAnswers = (await UserAnswer.find({
             user: req.user!.id,
             practiceId: {$in: lesson!.practices},
-            result: 10
         })).reduce((acc, userAnswer) => {
-            acc[userAnswer.practiceId] = true
+            acc[userAnswer.practiceId] = userAnswer.result 
             return acc;
         }, {});
 

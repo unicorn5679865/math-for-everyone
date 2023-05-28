@@ -3,7 +3,6 @@ import React from "react";
 
 export default function NotFound() {
   return (
-    <>
       <main className="grid min-h-full bg-white">
         <div className="text-center ">
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-600 sm:text-5xl">У-упс, что-то пошло не так...</h1>
@@ -23,6 +22,5 @@ export default function NotFound() {
           
         </div>
       </main>
-    </>
   )
 }
