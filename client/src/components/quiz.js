@@ -1,6 +1,7 @@
 import React,  {useEffect} from 'react';
 import { useFormik } from 'formik';
 import Button from "./common/Button";
+import { useNavigate } from "react-router";
 
 
 function SingleSelect ({question, ...inputProps}) {
@@ -78,6 +79,7 @@ export default function Quiz({tasks, onQuizCompleted, userResults, oneAttempt}) 
     initialValues: {},
     onSubmit: onQuizCompleted
   });
+  const navigate = useNavigate();
 
   useEffect (() => { 
     if ( typeof  window ?. MathJax !== "undefined" ){ 
@@ -102,7 +104,7 @@ export default function Quiz({tasks, onQuizCompleted, userResults, oneAttempt}) 
           </div>
         ))}
       </div>
-      {!(oneAttempt && userResults) && <Button className='m-auto mt-4' type='submit'>Получить 2 в дневник</Button>}
+      {!(oneAttempt && userResults) ? <Button className='m-auto mt-4' type='submit'>Получить оценку</Button> : <Button className='m-auto mt-4' type='submit' onClick={() => navigate(`/knowledge-control`)}>Вернуться </Button>}
     </form>
   );
 }

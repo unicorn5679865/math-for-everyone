@@ -43,7 +43,9 @@ export default function TopicsForControl() {
                             <th className="px-6 py-3">
                                 Оценка
                             </th>
-                            <th className="px-6 py-3"/>
+                            <th className="px-6 py-3">
+                                Доступ
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,8 +66,7 @@ export default function TopicsForControl() {
                                     </b>
                                 </td>
                                 <td className="px-6 py-4">
-                                    {/* поменять потом дату, на 7 например (тогда тест будет открываться за неделю до конца темы) */}
-                                    {todayDate > addDays(new Date(topic.endDate), -57) ?
+                                    {todayDate > addDays(new Date(topic.endDate), -35) ?
                                         <Button onClick={() => handleStartFinalTest(topic._id)} disabled={topic.finalPractice && topic.finalPractice.userResults?.length}>
                                             Начать
                                         </Button> : `Будет доступно ${ getLocalDate(addDays(new Date(topic.endDate), -7)) }`}
@@ -79,3 +80,4 @@ export default function TopicsForControl() {
         </div>
     )
 }
+

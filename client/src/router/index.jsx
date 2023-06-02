@@ -1,11 +1,10 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../components/common/header";
+import Footer from "../components/common/footer";
 import Lesson from "../components/lesson";
 import Signin from "../components/signinPage/sign-in";
 import NotFound from "../components/ErrorPage/notFound";
 import Topics from "../components/topics";
 import { Calendar } from "../components/calendar";
-import PrivateRoute from "./PrivateRoute";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { ApiErrorHandler } from "../components/ApiErrorHandler/ApiErrorHandler";
 import TopicsForControl from "../components/topicControl/topicsForControl";
@@ -25,8 +24,6 @@ export default () =>
                         <Route
                             path="/lesson/:lessonId"
                             element={ <Lesson/>
-                                // <PrivateRoute>
-                                // </PrivateRoute>
                             }/>
                         <Route
                             path="/topics"

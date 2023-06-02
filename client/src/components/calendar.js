@@ -23,7 +23,7 @@ export function Calendar() {
             return acc + practiceResult;
         }, 0);
 
-        return userTotalResult / maxPossibleResult * 100;
+        return Math.round(userTotalResult / maxPossibleResult * 100);
     }
 
     useEffect(() => {
@@ -68,7 +68,6 @@ export function Calendar() {
 
         setCalendarData(preparedData);
     }, [data])
-
 
     const handleExpanderClick = (task) => {
         setCalendarData(calendarData.map(t => (t.id === task.id ? task : t)));

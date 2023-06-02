@@ -111,14 +111,14 @@ const tasks= [
 
 const practices = [
     {
-        name: "Практика к уроку 1",
+        name: "Практика к уроку",
         _id: new mongoose.Types.ObjectId(),
         tasks: [
             ...tasks.map(t => t._id)
         ]
     },
     {
-        name: "Практика к уроку 1 - Повторение",
+        name: "Повторение урока",
         _id: new mongoose.Types.ObjectId(),
         tasks: [
             ...tasks.map(t => t._id)
